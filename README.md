@@ -34,43 +34,24 @@ In the data processing part of this reserach, the construction process of corpus
 * Finally, the sentences are manually evaluated which might describe the figures, and the confirmed figure description sentences are labelled with <FD>content</FD>.
  * A total of 859,221 sentences are included in the figure descriptive text corpora.
 
+> dataset examples can be find in 'datasets'
+> if you want all datasets for researches, please email us and we will provide for free.
+
 ##  How to use
 
 ### Huggingface Transformers 
 
 The `from_pretrained` method based on [Huggingface Transformers](https://github.com/huggingface/transformers) can directly obtain Journal_BERT serise models and Journal-GPT model online. 
 
-
-- Jour_BERT
-
+* The following is the use of the model with Jouranl-SCIBERT as an example, other models are used in a similar way
 ```python
 from transformers import AutoTokenizer, AutoModel
 
-tokenizer = AutoTokenizer.from_pretrained("KM4STfulltext/SSCI-BERT-e2")
+tokenizer = AutoTokenizer.from_pretrained("KM4STfulltext/Journal-SCIBERT")
 
-model = AutoModel.from_pretrained("KM4STfulltext/SSCI-BERT-e2")
+model = AutoModel.from_pretrained("KM4STfulltext/Journal-SCIBERT")
 ```
 
-- SSCI-SciBERT
-
-```python
-from transformers import AutoTokenizer, AutoModel
-
-tokenizer = AutoTokenizer.from_pretrained("KM4STfulltext/SSCI-SciBERT-e2")
-
-model = AutoModel.from_pretrained("KM4STfulltext/SSCI-SciBERT-e2")
-```
-
-
-3. Datasets for Identifying Abstract Structures 
-
-SSCI journal abstracts published between 2008 and 2020 obtained a total of 1378276 construction notes according to the functional structure of the sentence-by-sentence annotation abstracts in the five categories of background, purpose, methodology, results and conclusions (BPMRC).
-
-4. Datasets for Software Entities Recognition in Scientometrics 
-
-Using full-text data published in Scientometrics from 2010 to 2020, software entities in the dataset were manually annotated, and a total of 13,269 software entities were identified.
-> dataset examples can be find in 'datasets/examples'
-> if you want all datasets for researches, please email us and we will provide for free.()
 ### Download Models
 
 - The version of the model we provide is `PyTorch`. 
@@ -80,7 +61,7 @@ Using full-text data published in Scientometrics from 2010 to 2020, software ent
 - Download directly through Huggingface's official website. 
 - [KM4STfulltext/Journal-BERT](https://huggingface.co/KM4STfulltext/Journal-BERT)
 - [KM4STfulltext/Journal-RoBERTa](https://huggingface.co/KM4STfulltext/Journal-Roberta)
-- [KM4STfulltext/Journal-SCIBERT](https://huggingface.co/KM4STfulltext/Journal-SCIBERT)
+- [KM4STfulltext/Journal-SCIBERT](https://huggingface.co/KM4STfulltext/Journal-SCIBERT)(recommanded)
 - [KM4STfulltext/Journal-SSCIBERT](https://huggingface.co/KM4STfulltext/Journal-SSCIBERT)
 - [KM4STfulltext/Journal-GPT](https://huggingface.co/KM4STfulltext/Journal-GPT)
 
@@ -98,9 +79,8 @@ Using full-text data published in Scientometrics from 2010 to 2020, software ent
 
 ##  Acknowledgment
 
-- Journal-BERT was trained based on [BERT-Base-Cased]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
-- Journal-RoBERTa was trained based on [RoBERTa]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
-- Journal-SCIBERT was trained based on [scibert-scivocab-cased]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
-
-- Journal-SSCIBERT was trained based on [SSCIBERT]([SsciBERT: A pretrained language model for social scientific textl for social scientific text. (github.com)](https://github.com/S-T-Full-Text-Knowledge-Mining/SSCI-BERT))
-
+- Journal-BERT was trained based on [bert-base-cased]([google-research/bert](https://github.com/google-research/bert))
+- Journal-RoBERTa was trained based on [roberta-base]([facebookresearch/fairseq]((https://github.com/facebookresearch/fairseq/tree/main/examples/roberta)))
+- Journal-SCIBERT was trained based on [scibert-scivocab-cased]([allenai/scibert](https://github.com/allenai/scibert))
+- Journal-SSCIBERT was trained based on [sscibert]([S-T-Full-Text-Knowledge-Mining/SSCI-BERT](https://github.com/S-T-Full-Text-Knowledge-Mining/SSCI-BERT))
+- Journal-GPT was trained based on [gpt2]([openai/gpt-2](https://github.com/openai/gpt-2))
