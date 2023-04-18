@@ -102,5 +102,5 @@ Using full-text data published in Scientometrics from 2010 to 2020, software ent
 - Journal-RoBERTa was trained based on [RoBERTa]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
 - Journal-SCIBERT was trained based on [scibert-scivocab-cased]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
 
-- Journal-SSCIBERT was trained based on [SSCIBERT]([allenai/scibert: A BERT model for scientific text. (github.com)](https://github.com/allenai/scibert))
+- Journal-SSCIBERT was trained based on [SSCIBERT]([SsciBERT: A pretrained language model for social scientific textl for social scientific text. (github.com)](https://github.com/S-T-Full-Text-Knowledge-Mining/SSCI-BERT))
 
