@@ -1,0 +1,37 @@
+There have also been attempts to use contextual information for term verification. 
+The TV_FreqSem algorithm (Ji & Lu, 2007) extracts terms using semantic information within a context window. 
+In TV_FreqSem, if a majority of the context words in the observing window already appear in a domain lexicon, the candidate is considered a valid domain term. 
+TV_FreqSem performs well in Chinese term extraction if a large domain lexicon is available. 
+However, such a resource may not be readily available for other domains,
+Table 1a and Table 1b summarize the different term extraction algorithms in terms of their methods, features used, main advantages and disadvantages, and the domains to which they are applied.
+Existing extraction techniques look for features associated with domain-specific terms. Although different terms may use diverse features, only a few features are useful in a specific instance. 
+In designing extraction algorithms, a designer always faces the dilemma that including few features will result in an inability to distinguish terms from non-terms whereas adding more features can lead to an increase in conflict among the selected features.
+The objective of this study is to find a relatively domain independent and robust extraction method for Chinese using a minimum of resources. 
+The combined use of a delimiter-based term candidate extraction method and a link analysis based term verification method is proposed in this study. 
+<FD>A character string CS (CS=C1C2¡­Cn) is given in the corpus, as shown in Figure 1, where Ci is a Chinese character. </FD>
+<FD>Suppose there are two delimiters D1=Ci1¡­Cil and D2=Cj1¡­Cjm in CS, where D1¡ÊDList and D2¡ÊDList. </FD>
+<FD>The string CS is then segmented into five substrings: C1¡­Cib, Ci1¡­Cil, Cia¡­Cjb, Cj1¡­Cjm, and Cja¡­Cn. Because Ci1¡­Cil and Cj1¡­Cjm are delimiters, C1¡­Cib, Cia¡­Cjb, and Cja¡­Cn are regarded as three term candidates (TC1, TC2, and TC3 in Figure 1). </FD>
+<FD>Because the recall of term candidates is the most crucial element to term extraction as a whole, the whole string C1C2¡­Cn is regarded as a term candidate if no delimiter is contained in CS.</FD>
+Term candidates are extracted by first identifying boundary delimiter words instead of term candidates themselves. 
+This approach can be characterized as ¡°if a string appears between domain-independent delimiter words, it is considered a term candidate.¡± 
+Terms are then verified by iteratively calculating the domain specificity of the sentences and the term candidates. 
+This can be characterized as ¡°if a term candidate appears in domain-specific sentences, it is likely a term.¡±
+In general, sentences are constituted by substantives and functional words. Domain-specific terms (terms for short) are more likely to be domain substantives. 
+Words immediately before and after them, referred to as predecessors and successors of terms, are likely to be either functional words or other general substantive connecting terms. 
+These predecessors and successors are considered to be markers of terms and are, thus, referred to in this article as delimiters.
+In contrast to terms, delimiters, being mainly functional words and general substantives, are relatively stable and domain independent, and are much easier to identify. 
+Instead of looking for features associated with domain-specific terms, this work looks for features associated with term delimiters. In other words, terms are identified by finding their predecessors and successors as term boundary markers. 
+Words between term boundaries are taken to be term candidates.
+A scan tunneling microscope is a kind of quantum-tunneling-effect-based high angular resolution microscope).
+The socialist system is the basic system of the People's Republic of China).
+Sentence (1) is from an information technology (IT) academic paper and sentence (2) is from the Constitution of the People's Republic of China. 
+In sentence (1), ¡°¡± (scan tunneling microscope), ¡°¡± (quantum-tunneling-effect), and ¡°¡± (high angular resolution microscope) are IT terms whose boundaries are marked by the delimiters ¡°¡± (is), ¡°¡± (based) and ¡°¡± (an adjective marker). In sentence (2), ¡°¡± (the socialist system), ¡°¡± (People's Republic of China) and ¡°¡± (basic system) are legal terms whose boundaries are marked by the delimiters ¡°¡± (is) and ¡°¡± (an adjective marker). 
+Note that ¡°¡± (is) and ¡°¡± (an adjective marker) occur as delimiters in the two sentences of different domains and they are domain independent. The delimiters occur immediately before and after terms in both sentences. 
+Their usage and locations are stable and thus can be used as term boundary markers. 
+Delimiters can be obtained through different methods. The simplest method is to make use of a general purpose stop-word list. 
+A general purpose stop-word list is a much more readily available resource in any language as it is the most fundamental NLP resource and is used in many NLP applications (e.g., Wilbur & Sirotkin, 1992; Zou, Wang, Deng, & Han, 2006). 
+Delimiters can also be extracted by some extraction algorithms. 
+A simple extraction algorithm is presented in this article, which uses a small domain-specific corpus and a domain lexicon. 
+The performances from the use of a stop-word list and the delimiter extraction algorithm are evaluated in this article. For the time being, it is assumed that such a delimiter list is available.
+The proposed term candidate extraction algorithm based on identifying delimiters, labeled as TCE_DI (Term Candidate Extraction using Delimiter Identification), extracts term candidates from a domain corpus by using a delimiter list, referred to as the DList. 
+Given a DList, the algorithm TCE_DI shown below is quite straight-forward.
