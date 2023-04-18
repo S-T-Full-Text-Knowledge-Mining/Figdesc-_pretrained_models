@@ -12,6 +12,7 @@ Within the realm of academic full-texts and employing deep learning techniques, 
 ## Datasets
 
 ### Journal screening
+
 The data for this research were collected from 8,481 annotated academic papers published in six international journals in the domain of library and information between 2010 and 2022. There were 446 articles from the Journal of the Association for Information Science and Technology (JASIST), 547 articles from SAGE, 550 articles from Journal of Enterprise Information Management (JEIM), 1033 articles from Journal of Knowledge Management (JKM), 1,815 articles from Qualitative Health Research (QHR), and Scientometrics has 4,090 articles. 
 
 |Journal name|Number of papers|Number of figures|
@@ -37,11 +38,10 @@ In the data processing part of this reserach, the construction process of corpus
 
 ### Huggingface Transformers 
 
-The `from_pretrained` method based on [Huggingface Transformers](https://github.com/huggingface/transformers) can directly obtain SSCI-BERT and SSCI-SciBERT models online. 
+The `from_pretrained` method based on [Huggingface Transformers](https://github.com/huggingface/transformers) can directly obtain Journal_BERT serise models and Journal-GPT model online. 
 
 
-
-- SSCI-BERT
+- Jour_BERT
 
 ```python
 from transformers import AutoTokenizer, AutoModel
@@ -78,88 +78,17 @@ Using full-text data published in Scientometrics from 2010 to 2020, software ent
 ### From Huggingface 
 
 - Download directly through Huggingface's official website. 
-- [KM4STfulltext/SSCI-BERT-e2](https://huggingface.co/KM4STfulltext/SSCI-BERT-e2)
--  [KM4STfulltext/SSCI-SciBERT-e2](https://huggingface.co/KM4STfulltext/SSCI-SciBERT-e2)
-- [KM4STfulltext/SSCI-BERT-e4 ](https://huggingface.co/KM4STfulltext/SSCI-BERT-e4)
-- [KM4STfulltext/SSCI-SciBERT-e4](https://huggingface.co/KM4STfulltext/SSCI-SciBERT-e4)
+- [KM4STfulltext/Journal-BERT](https://huggingface.co/KM4STfulltext/Journal-BERT)
+- [KM4STfulltext/Journal-RoBERTa](https://huggingface.co/KM4STfulltext/Journal-Roberta)
+- [KM4STfulltext/Journal-SCIBERT](https://huggingface.co/KM4STfulltext/Journal-SCIBERT)
+- [KM4STfulltext/Journal-SSCIBERT](https://huggingface.co/KM4STfulltext/Journal-SSCIBERT)
+- [KM4STfulltext/Journal-GPT](https://huggingface.co/KM4STfulltext/Journal-GPT)
 
-### From Google Drive
-
-We have put the model on Google Drive for users. 
-
-| Model                                                        | DATASET(year) | Base Model             |
-| ------------------------------------------------------------ | ------------- | ---------------------- |
-| [SSCI-BERT-e2](https://drive.google.com/drive/folders/1xEDnovlwGO2JxqCaf3rdjS2cB6DOxhj4?usp=sharing) | 1986-2021     | Bert-base-cased        |
-| [SSCI-SciBERT-e2](https://drive.google.com/drive/folders/16DtIvnHvbrR_92MwgthRRsULW6An9te1?usp=sharing) (recommended) | 1986-2021     | Scibert-scivocab-cased |
-| [SSCI-BERT-e4](https://drive.google.com/drive/folders/1sr6Av8p904Jrjps37g7E8aj4HnAHXSxW?usp=sharing) | 1986-2021     | Bert-base-cased        |
-| [SSCI-SciBERT-e4](https://drive.google.com/drive/folders/1ty-b4TIFu8FbilgC4VcI7Bgn_O5MDMVe?usp=sharing) | 1986-2021     | Scibert-scivocab-cased |
-
-##  Evaluation & Results
-
-- We use SSCI-BERT and SSCI-SciBERT to perform Text Classificationon different social science research corpus. The experimental results are as follows. Relevant data sets are available for download in the  **Verification task datasets** folder of this project.
-
-#### JCR Title Classify Dataset
-
-| Model                  | accuracy | macro avg | weighted avg |
-| ---------------------- | -------- | --------- | ------------ |
-| Bert-base-cased        | 28.43    | 22.06     | 21.86        |
-| Scibert-scivocab-cased | 38.48    | 33.89     | 33.92        |
-| SSCI-BERT-e2           | 40.43    | 35.37     | 35.33        |
-| SSCI-SciBERT-e2        | 41.35    | 37.27     | 37.25        |
-| SSCI-BERT-e4           | 40.65    | 35.49     | 35.40        |
-| SSCI-SciBERT-e4        | 41.13    | 36.96     | 36.94        |
-| Support                | 2300     | 2300      | 2300         |
-
-#### JCR Abstract Classify Dataset
-
-| Model                  | accuracy | macro avg | weighted avg |
-| ---------------------- | -------- | --------- | ------------ |
-| Bert-base-cased        | 48.59    | 42.8      | 42.82        |
-| Scibert-scivocab-cased | 55.59    | 51.4      | 51.81        |
-| SSCI-BERT-e2           | 58.05    | 53.31     | 53.73        |
-| SSCI-SciBERT-e2        | 59.95    | 56.51     | 57.12        |
-| SSCI-BERT-e4           | 59.00    | 54.97     | 55.59        |
-| SSCI-SciBERT-e4        | 60.00    | 56.38     | 56.90        |
-| Support                | 2200     | 2200      | 2200         |
-
-#### JCR Mixed Titles and Abstracts Dataset
-
-| **Model**              | **accuracy** | **macro  avg** | **weighted  avg** |
-| ---------------------- | ------------ | -------------- | ----------------- |
-| Bert-base-cased        | 58.24        | 57.27          | 57.25             |
-| Scibert-scivocab-cased | 59.58        | 58.65          | 58.68             |
-| SSCI-BERT-e2           | 60.89        | 60.24          | 60.30             |
-| SSCI-SciBERT-e2        | 60.96        | 60.54          | 60.51             |
-| SSCI-BERT-e4           | 61.00        | 60.48          | 60.43             |
-| SSCI-SciBERT-e4        | 61.24        | 60.71          | 60.75             |
-| Support                | 4500         | 4500           | 4500              |
-
-#### SSCI Abstract Structural Function Recognition (Classify Dataset)
-
-|              | Bert-base-cased            | SSCI-BERT-e2        | SSCI-BERT-e4        | support     |
-| ------------ | -------------------------- | ------------------- | ------------------- | ----------- |
-| B            | 63.77                      | 64.29               | 64.63               | 224         |
-| P            | 53.66                      | 57.14               | 57.99               | 95          |
-| M            | 87.63                      | 88.43               | 89.06               | 323         |
-| R            | 86.81                      | 88.28               | **88.47**           | 419         |
-| C            | 78.32                      | 79.82               | 78.95               | 316         |
-| accuracy     | 79.59                      | 80.9                | 80.97               | 1377        |
-| macro avg    | 74.04                      | 75.59               | 75.82               | 1377        |
-| weighted avg | 79.02                      | 80.32               | 80.44               | 1377        |
-|              | **Scibert-scivocab-cased** | **SSCI-SciBERT-e2** | **SSCI-SciBERT-e4** | **support** |
-| B            | 69.98                      | **70.95**           | **70.95**           | 224         |
-| P            | 58.89                      | **60.12**           | 58.96               | 95          |
-| M            | 89.37                      | **90.12**           | 88.11               | 323         |
-| R            | 87.66                      | 88.07               | 87.44               | 419         |
-| C            | 80.7                       | 82.61               | **82.94**           | 316         |
-| accuracy     | 81.63                      | **82.72**           | 82.06               | 1377        |
-| macro avg    | 77.32                      | **78.37**           | 77.68               | 1377        |
-| weighted avg | 81.6                       | **82.58**           | 81.92               | 1377        |
 
 ## Cited
 
 - If our content is helpful for your research work, please quote our research in your article. 
-- If you want to quote our research, [https://link.springer.com/article/10.1007/s11192-022-04602-4](https://link.springer.com/article/10.1007/s11192-022-04602-4)
+- This study has not yet been published, if you want to quote our research,, you can use this website to make a reference 
 
 ## Disclaimer
 
@@ -169,6 +98,9 @@ We have put the model on Google Drive for users.
 
 ##  Acknowledgment
 
-- SSCI-BERT was trained based on [BERT-Base-Cased]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
-- SSCI-SciBERT was trained based on [scibert-scivocab-cased]([allenai/scibert: A BERT model for scientific text. (github.com)](https://github.com/allenai/scibert))
+- Journal-BERT was trained based on [BERT-Base-Cased]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
+- Journal-RoBERTa was trained based on [RoBERTa]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
+- Journal-SCIBERT was trained based on [scibert-scivocab-cased]([google-research/bert: TensorFlow code and pre-trained models for BERT (github.com)](https://github.com/google-research/bert)).
+
+- Journal-SSCIBERT was trained based on [SSCIBERT]([allenai/scibert: A BERT model for scientific text. (github.com)](https://github.com/allenai/scibert))
 
