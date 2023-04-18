@@ -2,19 +2,13 @@
 
 ## Introduction
 
-The research for social science texts needs the support natural language processing tools. 
-
-The pre-trained language model has greatly improved the accuracy of text mining in general texts. At present, there is an urgent need for a pre-trained language model specifically for the automatic processing of scientific texts in social science. 
-
-We used the abstract of social science research as the training set. Based on the deep language model framework of BERT, we constructed [SSCI-BERT and SSCI-SciBERT](https://github.com/S-T-Full-Text-Knowledge-Mining/SSCI-BERT)  pre-training language models by [transformers/run_mlm.py](https://github.com/huggingface/transformers/blob/main/examples/pytorch/language-modeling/run_mlm.py). 
-
-We designed four downstream tasks of  Text Classification on different social scientific article corpus to verify the performance of the model.
+Within the realm of academic full-texts and employing deep learning techniques, this research primarily tackles the following three issues. 
+*Firstly, in the rapidly evolving field of multimodal research, constructing datasets of figures and their corresponding descriptive sentences not only determines the overall performance of multimodal large language models but also plays a significant role in advancing the study of intelligent systems within the multimodal domain. In the context of academic full-texts, a large-scale dataset of academic images and descriptive sentences is still lacking. The construction of such a dataset is an issue that this research aims to investigate. 
+*Secondly, in the context of the burgeoning deep learning technology, the integration of this advanced approach into academic full-text informetrics, knowledge discovery, and information retrieval is of paramount importance for augmenting the overall efficacy of academic full-text research. A fundamental research question in this research pertains to the potential disparities in the performance of sequential deep learning algorithms and pre-trained models concerning figure description sentence recognition. 
+*Finally, distinct from the investigation of pure model performance, a critical aspect of applied research is the application of the constructed models to specific research questions. In the context of this study, this entails examining the performance of the models in recognizing image description sentences within authentic domain-specific academic full-texts.
 
 - SSCI-BERT and SSCI-SciBERT are trained on the abstract of  articles published in SSCI journals from 1986 to 2021. The training set involved in the experiment included a total of `503910614 words`. 
 - Based on the idea of Domain-Adaptive Pretraining, `SSCI-BERT` and `SSCI-SciBERT` combine a large amount of abstracts of scientific articles  based on the BERT structure, and continue to train the BERT and SSCI-SciBERT models respectively to obtain pre-training models for the automatic processing of Social science research texts. 
-
-
-
 
 
 ##  How to use
